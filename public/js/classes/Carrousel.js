@@ -51,7 +51,7 @@ class Carrousel {
    */
   avancer() {
     this.position++;
-    console.log(this.position);
+    // console.log(this.position);
 
     if (this.position >= this.tableauImages.length) {
       this.position = 0;
