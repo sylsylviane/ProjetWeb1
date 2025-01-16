@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Cooper Hewitt";
-  src: url("/fonts/CooperHewitt-Thin.otf") format("woff2"),
-    url("/fonts/CooperHewitt-Light.otf") format("woff2"),
-    url("/fonts/CooperHewitt-Book.otf") format("woff2"),
-    url("/fonts/CooperHewitt-medium.otf") format("woff2"),
-    url("/fonts/CooperHewitt-Semibold.otf") format("woff2"),
-    url("/fonts/CooperHewitt-Bold.otf") format("woff2"),
-    url("/fonts/CooperHewitt-Heavy.otf") format("woff2");
+  src: url("{{asset}}/fonts/CooperHewitt-Thin.otf") format("woff2"),
+    url("{{asset}}/fonts/CooperHewitt-Light.otf") format("woff2"),
+    url("{{asset}}/fonts/CooperHewitt-Book.otf") format("woff2"),
+    url("{{asset}}/fonts/CooperHewitt-medium.otf") format("woff2"),
+    url("{{asset}}/fonts/CooperHewitt-Semibold.otf") format("woff2"),
+    url("{{asset}}/fonts/CooperHewitt-Bold.otf") format("woff2"),
+    url("{{asset}}/fonts/CooperHewitt-Heavy.otf") format("woff2");
 
   font-style: normal;
 }
