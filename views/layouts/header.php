@@ -41,7 +41,7 @@
     </div>
 
     <header>
-        <h1><a href="index.html"><img src="{{asset}}/img/logo-2-alt.png" alt="Logo Stampee" class="logo"></a></h1>
+        <h1><a href="{{base}}/accueil"><img src="{{asset}}/img/logo-2-alt.png" alt="Logo Stampee" class="logo"></a></h1>
         <nav class="nav-princ">
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
             <label
@@ -51,7 +51,7 @@
                 <span><i class="ri-menu-line"></i></span>
             </label>
             <ul>
-                <li><a href="portail-enchere.html">Portail d'enchères</a></li>
+                <li><a href="{{base}}/portail-encheres">Portail d'enchères</a></li>
                 <li class="menu-deroulant">
                     <a href="">À propos de Lord Stampee III<i class="ri-arrow-down-s-fill"></i></a>
                     <ul>
