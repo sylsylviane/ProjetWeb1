@@ -5,15 +5,20 @@ CREATE TABLE IF NOT EXISTS `timbre` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(100) NOT NULL,
   `date` DATE NULL,
-  `pays` VARCHAR(45) NULL,
-  `condition` VARCHAR(45) NULL,
   `tirage` VARCHAR(45) NULL,
   `dimension` VARCHAR(45) NULL,
   `certification` VARCHAR(45) NULL,
   `description` TEXT NULL,
+  `couleur` VARCHAR(45) NULL,
+  `pays_id` INT NOT NULL,
+  `condition_id` INT NOT NULL,
+  `membre_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`enchere_id`) REFERENCES enchere(`id`)
+  FOREIGN KEY (`pays_id`) REFERENCES `pays`(`id`),
+  FOREIGN KEY (`condition_id`) REFERENCES `condition`(`id`),
+  FOREIGN KEY (`membre_id`) REFERENCES `membre`(`id`)
 );
+
 
 CREATE TABLE IF NOT EXISTS `enchere` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -21,9 +26,9 @@ CREATE TABLE IF NOT EXISTS `enchere` (
   `periode` DATE NOT NULL,
   `prix_plancher` REAL NOT NULL,
   `coup_de_coeur` VARCHAR(45) NULL,
-  `membre_id` INT NOT NULL,
+  `timbre_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`membre_id`) REFERENCES membre(`id`)
+  FOREIGN KEY (`timbre_id`) REFERENCES timbre(`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `membre` (
@@ -55,12 +60,13 @@ CREATE TABLE IF NOT EXISTS `pays` (
 );
 
 CREATE TABLE IF NOT EXISTS `mise` (
-  `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `montant` REAL NOT NULL,
   `membre_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`membre_id`) REFERENCES membre(`id`)
+  `enchere_id` INT NOT NULL,
+  PRIMARY KEY (`membre_id`, `enchere_id`),
+  FOREIGN KEY (`membre_id`) REFERENCES membre(`id`),
+  FOREIGN KEY (`enchere_id`) REFERENCES enchere(`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `image` (
@@ -68,20 +74,6 @@ CREATE TABLE IF NOT EXISTS `image` (
   `image_url` VARCHAR(100) NOT NULL,
   `timbre_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`timbre_id`) REFERENCES timbre(`id`)
-);
-
-CREATE TABLE IF NOT EXISTS `couleur` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE IF NOT EXISTS `timbreCouleur` (
-  `couleur_id` INT,
-  `timbre_id` INT,
-  PRIMARY KEY (`couleur_id`, `timbre_id`),
-  FOREIGN KEY (`couleur_id`) REFERENCES couleur(`id`),
   FOREIGN KEY (`timbre_id`) REFERENCES timbre(`id`)
 );
 
@@ -94,3 +86,8 @@ CREATE TABLE IF NOT EXISTS `favori` (
   FOREIGN KEY (`membre_id`) REFERENCES membre(`id`)
 );
 
+CREATE TABLE IF NOT EXISTS `condition` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`)
+);
