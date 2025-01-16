@@ -1,0 +1,42 @@
+.menu-deroulant {
+  position: relative;
+}
+
+.menu-deroulant > ul {
+  position: absolute;
+  min-width: max-content;
+  top: 100%;
+  padding: 10px;
+  background-color: var(--couleur-blanc);
+  transition-property: opacity, transform;
+  transition-duration: 350ms;
+  z-index: 2;
+  border-bottom: 1px solid var(--couleur-bleu-pale);
+  border-left: 1px solid var(--couleur-bleu-pale);
+  border-right: 1px solid var(--couleur-bleu-pale);
+  min-width: 100%;
+
+  & li {
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      transition-duration: 350ms;
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    display: none;
+  }
+}
+
+.menu-deroulant:not(:hover) > ul {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+@media screen and (max-width: 990px) {
+  .menu-deroulant i {
+    display: none;
+  }
+}

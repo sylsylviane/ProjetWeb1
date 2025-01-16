@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  transition: 350ms;
+
+  &:hover {
+    color: var(--couleur-or);
+  }
+}
+
+i {
+  font-size: 36px;
+  color: var(--couleur-bleu-nuit);
+  cursor: pointer;
+  transition: 350ms;
+}
+
+li {
+  list-style-type: none;
+}
+
+p {
+  max-width: 90ch;
+}
+
+select {
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid var(--couleur-bleu-pale);
+}
+
+picture,
+picture > img {
+  display: block;
+}
+
+fieldset {
+  display: none;
+}

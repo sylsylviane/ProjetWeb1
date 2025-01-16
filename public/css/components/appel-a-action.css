@@ -1,0 +1,31 @@
+.appel-a-action {
+  background-color: var(--couleur-bleu-fonce);
+  color: var(--couleur-blanc);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  & header {
+    margin-bottom: 0;
+  }
+
+  & h3,
+  & h2 {
+    text-align: center;
+  }
+
+  & a {
+    margin-top: 30px;
+
+    &:hover{
+      border: 2px solid var(--couleur-blanc);
+    }
+  }
+
+  & p{
+    text-align: center;
+  }
+}

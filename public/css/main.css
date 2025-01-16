@@ -1,0 +1,52 @@
+
+/***********BASES***************/
+@import url("base/couleurs.css");
+@import url("base/typographie.css");
+
+/*********COMPOSANTES**************/
+@import url("components/flex.css");
+@import url("components/carte.css");
+@import url("components/grille.css");
+@import url("components/bouton.css");
+@import url("components/conteneur-flex.css");
+@import url("components/nav-princ.css");
+@import url("components/menu-deroulant.css");
+@import url("components/accordeon.css");
+@import url("components/pagination.css");
+@import url("components/tri.css");
+@import url("components/nav-sec.css");
+@import url("components/menu-toggle.css");
+@import url("components/menu-bouton-conteneur.css");
+@import url("components/pied-de-site.css");
+@import url("components/carte-detaillee.css");
+@import url("components/top-banniere.css");
+@import url("components/champ-input.css");
+@import url("components/fil-ariane.css");
+@import url("components/opacite.css");
+@import url("components/logo.css");
+@import url("components/carrousel.css");
+@import url("components/appel-a-action.css");
+@import url("components/texte-image.css");
+@import url("components/carte-image-texte.css");
+@import url("components/fade-in.css");
+@import url("components/conteneur-carte.css");
+@import url("components/visually-hidden.css");
+
+
+
+/***************LAYOUT******************/
+@import url("layout/body.css");
+@import url("layout/section.css");
+@import url("layout/region-main.css");
+@import url("layout/general.css");
+
+
+
+
+
+
+
+
+
+
+

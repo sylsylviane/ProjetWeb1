@@ -1,0 +1,157 @@
+.carte-detaillee {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+
+  & h2{
+    font-family: "Cooper Hewitt Light", sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+  @media screen and (max-width: 1330px) {
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 990px) {
+    flex-direction: column;
+  }
+
+}
+
+.carte-detaillee > div {
+  display: flex;
+  gap: 40px;
+  flex-basis: calc(40% - 60px);
+  flex-grow: 1;
+
+  @media screen and (max-width: 1330px) {
+    flex-basis: 100%;
+  }
+}
+
+.carte-detaillee > div > div img {
+  width: 100px;
+  cursor: pointer;
+}
+
+.carte-detaillee div > figure {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  cursor: zoom-in;
+
+  & > i {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #ffffff76;
+  }
+}
+
+/*=====================================================*/
+.carte-detaillee_texte {
+  border: 1px solid var(--couleur-bleu-pale);
+  flex-grow: 1;
+  flex-basis: calc(40% - 60px);
+  gap: 15px;
+
+  @media screen and (max-width: 1330px) {
+    flex-wrap: wrap;
+    flex-basis: calc(50% - 60px);
+  }
+}
+.carte-detaillee_texte > header {
+  border-bottom: 1px solid var(--couleur-bleu-pale);
+  padding: 40px 20px;
+  max-width: 100%;
+  min-height: 50px;
+}
+
+.carte-detaillee_texte > div {
+  padding: 20px 20px 40px 20px;
+  border-bottom: 1px solid var(--couleur-bleu-pale);
+}
+
+.carte-detaillee_texte > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carte-detaillee_texte i {
+  font-size: 20px;
+  cursor: text;
+}
+
+.carte-detaillee_texte span {
+  font-size: 18px;
+  font-family: "aileron", sans-serif;
+  font-weight: 400;
+}
+
+/*=======================================*/
+.carte-detaillee_texte.module {
+  display: flex;
+  gap: 15px;
+  flex-grow: 0;
+  flex-basis: calc(30% - 60px);
+
+  @media screen and (max-width: 1330px) {
+    flex-basis: calc(50% - 60px);
+  }
+}
+
+.carte-detaillee_texte.module h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.carte-detaillee_texte.module > div {
+  border: none;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.carte-detaillee_texte.module form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.carte-detaillee_texte.module label {
+  display: flex;
+  flex-direction: column;
+}
+.carte-detaillee_texte.module input {
+  padding: 5px;
+  max-width: 250px;
+}
+
+.carte-detaillee_texte.module img {
+  max-width: 200px;
+}
+/*============================================*/
+.carte-detaillee_texte_info_supp {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 40px 20px;
+  gap: 20px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  & a {
+    text-decoration: underline #bfc4c7;
+  }
+
+  & h2 {
+    text-transform: initial;
+  }
+}

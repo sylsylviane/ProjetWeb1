@@ -1,0 +1,32 @@
+.texte-image {
+  display: flex;
+  margin-top: 60px;
+
+  & img {
+    max-height: 30rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  & a {
+    margin-top: 30px;
+  }
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+
+    @media screen and (max-width: 1330px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  & a {
+    max-width: fit-content;
+  }
+
+  & header {
+    margin-bottom: 0;
+  }
+}

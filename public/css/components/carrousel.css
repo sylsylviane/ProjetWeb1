@@ -1,0 +1,54 @@
+.carrousel {
+  min-width: 100%;
+  position: relative;
+
+  /* BOUTON DE DÉFILEMENT - FLECHE */
+  & > img {
+    position: absolute;
+    max-width: 30px;
+    cursor: pointer;
+    top: 50%;
+    background-color: var(--couleur-blanc);
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 990px) {
+    display: none;
+  }
+}
+
+.carrousel__bouton {
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  translate: 0 -50%;
+
+  &.gauche {
+    position: absolute;
+    left: 20px;
+    transform: rotate(180deg);
+
+    &:hover {
+      transform: rotate(180deg) scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  &.droit {
+    position: absolute;
+    right: 20px;
+    transform: rotate(0deg);
+
+    &:hover {
+      transform: rotate(0deg) scale(1.1);
+      opacity: 1;
+    }
+  }
+}
+
+.carrousel__conteneur-image-principale > img {
+  min-width: 100%;
+  display: inline-block;
+  background-size: cover;
+  object-fit: cover;
+}

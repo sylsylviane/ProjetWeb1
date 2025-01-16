@@ -1,0 +1,19 @@
+.grille {
+  --colonne: 35ch;
+  --gouttiere: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--colonne), 1fr));
+  gap: var(--gouttiere);
+  flex-basis: 80%;
+  flex-grow: 1;
+
+  @media screen and (max-width: 1330px) {
+    grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+  }
+}
+
+.grille.petite {
+  --colonne: 10ch;
+  --gouttiere: 15px;
+}

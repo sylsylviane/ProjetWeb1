@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+  gap: 20px;
+
+  @media screen and (max-width: 1330px) {
+    & {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+.flex.wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+.flex.flex-colonne {
+  display: flex;
+  flex-direction: column;
+}
+

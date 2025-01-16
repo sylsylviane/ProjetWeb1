@@ -1,0 +1,32 @@
+body {
+  background-color: var(--couleur-blanc);
+  color: var(--couleur-bleu-nuit);
+}
+
+body > * {
+  margin: 40px;
+}
+
+body > header {
+  padding-bottom: 20px;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--couleur-bleu-pale);
+  margin-top: 0;
+
+  @media screen and (max-width: 1067px) {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  @media screen and (max-width: 990px) {
+    & {
+      display: flex;
+      border-bottom: none;
+      justify-content: space-between;
+    }
+  }
+}

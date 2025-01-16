@@ -1,0 +1,14 @@
+.fil-ariane {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: 990px) {
+    display: none;
+  }
+}
+.fil-ariane i {
+  font-size: 18px;
+  font-weight: bold;
+}

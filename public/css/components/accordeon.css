@@ -1,0 +1,187 @@
+/* RÉFÉRENCE: https://www.youtube.com/watch?v=pzy_QStQaqA&t=951s*/
+.accordeon {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  flex-basis: 18%;
+
+  & > div {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+    & > div {
+      border-bottom: 1px solid var(--couleur-bleu-pale);
+
+      @media screen and (max-width: 1330px) {
+        border: none;
+        flex-direction: column;
+        flex-wrap: wrap;
+        left: 0;
+        z-index: 1;
+      }
+    }
+    & > * {
+      overflow: hidden;
+    }
+  }
+}
+
+.accordeon__label,
+.accordeon__contenu {
+  padding: 14px 20px;
+  font-weight: 400;
+
+  @media screen and (max-width: 1330px) {
+    & {
+      font-size: 20px;
+    }
+  }
+}
+
+.accordeon__contenu {
+  background-color: #fff;
+  line-height: 1.25;
+  font-size: 0.85em;
+  display: none;
+
+  & fieldset{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  & input[type="checkbox"] {
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 1px solid var(--couleur-bleu-pale);
+    border-radius: 2px;
+
+    &:checked {
+      background-color: var(--couleur-bleu-fonce);
+    }
+  }
+
+  & p {
+    max-width: 90ch;
+  }
+
+  & ul {
+    padding: 20px;
+  }
+
+  & li {
+    list-style-type: square;
+  }
+
+  & span{
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 1330px) {
+    padding: 14px 20px;
+  }
+}
+
+.accordeon__label {
+  display: block;
+  background-color: #fff;
+  font-family: "Cooper Hewitt", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.1s;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+  &:hover {
+    background: var(--couleur-blanc);
+  }
+}
+
+.accordeon__input {
+  display: none;
+}
+
+.accordeon__input:checked ~ .accordeon__contenu {
+  display: block;
+}
+
+/*Pivotement de la flèche*/
+.accordeon__input:checked ~ .accordeon__label::after {
+  transform: translateY(-50%) rotate(0.5turn);
+}
+
+/*Pivotement de la flèche pour l'accordéon ouvert*/
+.accordeon__input ~ .accordeon__label-visible::after {
+  transform: translateY(-50%) rotate(0.5turn);
+}
+.accordeon__input:checked ~ .accordeon__label-visible::after {
+  transform: translateY(-50%) rotate(1turn);
+}
+/*Premier accordéon ouvert*/
+.accordeon__contenu-visible {
+  display: block;
+}
+.accordeon__input:checked ~ .accordeon__contenu-visible {
+  display: none;
+}
+
+/*Flèche vers le bas pour accordeon*/
+.accordeon__fleche::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 12px;
+  height: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23a0abb3;" /></svg>');
+  background-size: contain;
+  transition: transform 0.4s;
+}
+
+/*fait disparaitre le label filtre*/
+.accordeon__label-toggle {
+  display: none;
+
+  &:hover {
+    color: var(--couleur-bleu-nuit);
+    transition: 1000ms;
+  }
+
+  @media screen and (max-width: 1330px) {
+    & {
+      background-color: var(--couleur-bleu-fonce);
+      color: white;
+      display: flex;
+      position: relative;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+}
+
+.accordeon_grand {
+  flex-basis: 100%;
+}
+
+@media screen and (max-width: 1330px) {
+  .accordeon__toggle ~ div div {
+    height: 0;
+    margin: 0;
+  }
+
+  .accordeon__toggle:checked ~ div div {
+    height: auto;
+  }
+}
+
+.accordeon fieldset{
+  border: none;
+  & legend{
+    display: none;
+  }
+}

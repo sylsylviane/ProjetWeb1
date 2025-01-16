@@ -1,0 +1,10 @@
+section > header {
+  margin-bottom: 20px;
+
+  & h2 {
+    font-family: "Cooper Hewitt", sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+  }
+}
+
