@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,10 @@
 
 <body>
     <div class="top-banniere">
-        <i class="ri-user-3-line"></i>
+        {% if guest is empty %}
+        <p> Bienvenue {{ session.user_name }}</p>
+        <a href="{{base}}/membre/profil?id={{session.user_id}}"><i class="ri-user-3-line"></i></a>
+        {% endif %}
         <form class="champ-input">
             <label class="champ-input__recherche" aria-label="recherche">
                 <input type="search" placeholder="Écrivez votre recherche...">
@@ -60,11 +64,20 @@
                         <li><a href="">Historique familial</a></li>
                     </ul>
                 </li>
-                <li class="opacite"><a href="">Devenir membre</a></li>
-                <li class="opacite"><a href="">Se connecter</a></li>
+                {% if guest %}
+                <li class="opacite"><a href="{{base}}/membre/inscription">Devenir membre</a></li>
+                <li class="opacite"><a href="{{base}}/login">Se connecter</a></li>
+                {% else %}
+                <li class="opacite"><a href="{{base}}/logout">Se déconnecter</a></li>
+                {% endif %}
+
             </ul>
-            <div class="bouton bouton-or">Devenir membre</div>
-            <div class="bouton">Se connecter</div>
+            {% if guest %}
+            <div class="bouton bouton-or"><a href="{{base}}/membre/inscription">Devenir membre</a></div>
+            <div class="bouton"><a href="{{base}}/login">Se connecter</a></div>
+            {% else %}
+            <div class="bouton"><a href="{{base}}/logout">Se déconnecter</a></div>
+            {% endif %}
         </nav>
     </header>
 
