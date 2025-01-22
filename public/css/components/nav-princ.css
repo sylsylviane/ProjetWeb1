@@ -23,7 +23,7 @@
   font-size: 22px;
 }
 
-.nav-princ a {
+.nav-princ li a {
   text-decoration: none;
   padding: 10px;
   display: block;

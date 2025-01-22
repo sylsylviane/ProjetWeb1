@@ -13,9 +13,9 @@ a {
   color: inherit;
   transition: 350ms;
 
-  &:hover {
+  /* &:hover {
     color: var(--couleur-or);
-  }
+  } */
 }
 
 i {

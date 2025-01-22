@@ -19,6 +19,10 @@
     border: 2px solid var(--couleur-or);
     color: #fff;
   }
+
+  & > a{
+    padding : 0 ;
+  }
 }
 
 .bouton-or {
