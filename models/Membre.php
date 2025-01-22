@@ -16,7 +16,7 @@ class Membre extends CRUD{
     {
         $membre = $this->unique('nom_utilisateur', $username);
         if ($membre) {
-            if (password_verify($password, $membre['mot_de_passe'])) {
+            if (password_verify($password, $membre['mdp'])) {
                 session_regenerate_id();
                 $_SESSION['user_id'] = $membre['id'];
                 $_SESSION['user_name'] = $membre['prenom'];
