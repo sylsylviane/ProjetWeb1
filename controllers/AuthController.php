@@ -20,7 +20,7 @@ class AuthController
         $validator->field('nom_utilisateur', $data['nom_utilisateur'], 'Le nom d\'utilisateur')->min(2)->max(50);
         $validator->field('mdp', $data['mdp'], 'Le mot de passe')->min(6)->max(20);
 
-        if ($validator->isSuccess()) {
+        if ($validator->isSuccess() && $data['mdp']==$data['mdp2']) {
             $membre = new Membre;
             $checkuser = $membre->checkuser($data['nom_utilisateur'], $data['mdp']);
 

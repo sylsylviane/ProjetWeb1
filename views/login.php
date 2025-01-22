@@ -18,10 +18,6 @@
             <input type="password" name="mdp">
         </label>
 
-        <label class="champ-input">Confirmation du mot de passe
-            <input type="password" name="mdp2">
-        </label>
-
         <a href="">Mot de passe oublié ?</a>
         <input type="submit" class="bouton" value="Accéder à mon profil">
     </form>
