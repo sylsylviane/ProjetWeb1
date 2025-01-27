@@ -21,11 +21,11 @@ Route::get('/login', 'AuthController@index');
 Route::post('/login', 'AuthController@store');
 Route::get('/logout', 'AuthController@delete');
 
-Route::get('/resetpwd/forgot-password', 'ResetPassword@index');
-Route::post('/resetpwd/forgot-password', 'ResetPassword@token');
+Route::get('/forgot-password', 'ResetPassword@index');
+Route::post('/forgot-password', 'ResetPassword@token');
 
-Route::get('resetpwd/reset-password', 'ResetPassword@recuperationToken');
-Route::post('resetpwd/reset-password', 'ResetPassword@resetPassword'); 
+Route::get('/reset-password', 'ResetPassword@recuperationToken');
+Route::post('/reset-password', 'ResetPassword@resetPassword'); 
 
 Route::dispatch();
 ?>
