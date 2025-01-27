@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Cooper Hewitt";
+  src: url("/fonts/CooperHewitt-Thin.otf") format("woff2"),
+    url("/fonts/CooperHewitt-Light.otf") format("woff2"),
+    url("/fonts/CooperHewitt-Book.otf") format("woff2"),
+    url("/fonts/CooperHewitt-medium.otf") format("woff2"),
+    url("/fonts/CooperHewitt-Semibold.otf") format("woff2"),
+    url("/fonts/CooperHewitt-Bold.otf") format("woff2"),
+    url("/fonts/CooperHewitt-Heavy.otf") format("woff2");
+
+  font-style: normal;
+}
+
+body {
+  font-family: "aileron", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.25;
+  max-width: 90ch;
+}
+
+h1 {
+  font-family: "Cooper Hewitt Light", sans-serif;
+  font-weight: 200;
+  font-size: 20px;
+  text-transform: uppercase;
+
+  @media screen and (max-width: 1330px) {
+    & {
+      font-size: 22px;
+    }
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+h3, h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+p {
+  font-size: 16px;
+}
+
+p,
+small {
+  font-family: "aileron", sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+li {
+  font-weight: 300;
+  font-size: 16px;
+}
