@@ -19,7 +19,7 @@
         </label>
 
 
-        <a href="{{base}}/forgot-password">Mot de passe oublié ?</a>
+        <a href="{{base}}/resetpwd/forgot-password">Mot de passe oublié ?</a>
         <input type="submit" class="bouton" value="Accéder à mon profil">
     </form>
 </div>
