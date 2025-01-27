@@ -75,7 +75,7 @@
     </div>
 </section>
 
-<section>
+<!-- <section>
     <header>
         <h2>En vedette</h2>
     </header>
@@ -164,7 +164,7 @@
             </div>
         </article>
     </div>
-</section>
+</section> -->
 
 <section class="appel-a-action">
     <header>

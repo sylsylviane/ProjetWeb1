@@ -15,12 +15,11 @@
     </p>
     <p><strong>Code postal: </strong>{{ membre.code_postal }}</p>
     <p><strong>Numéro de téléphone: </strong>{{ membre.telephone }}</p>
-    <p><strong>Courriel: </strong>{{ membre.courriel }}</p>
 
     <a href="{{ base }}/membre/edit?id={{membre.id}}" class="bouton">Modifier mon profil</a>
-    <form action="{{ base }}/membre/delete" method="post">
+    <!-- <form action="{{ base }}/membre/delete" method="post">
         <input type="hidden" name="id" value="{{ membre.id }}">
         <button type="submit" class="bouton">Supprimer mon profil</button>
-    </form>
+    </form> -->
 </div>
 {{include('layouts/footer.php')}}

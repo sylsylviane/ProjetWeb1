@@ -5,7 +5,7 @@
     <i class="ri-arrow-right-s-line"></i>
     <a href="portail-enchere.html"><small>Portail d'enchères</small></a>
 </div>
-<div class="tri">
+<!-- <div class="tri">
     <form>
         <div>
             <p>Affichage</p>
@@ -559,6 +559,6 @@
             </div>
         </article>
     </div>
-</div>
+</div> -->
 
 {{include('layouts/footer.php')}}

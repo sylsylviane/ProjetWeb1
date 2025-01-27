@@ -13,8 +13,8 @@
         <label class="champ-input">Mot de passe*
             <input type="password" name="mdp">
         </label>
-        {% if errors.mot_de_passe is defined %}
-        <span class="error">{{ errors.mot_de_passe }}</span>
+        {% if errors.mdp is defined %}
+        <span class="error">{{ errors.mdp }}</span>
         {% endif %}
 
         <label class="champ-input">Prénom*
@@ -25,10 +25,10 @@
         {% endif %}
 
         <label class="champ-input">Nom de famille*
-            <input type="text" name="nom_famille" value="{{ inputs.nom }}">
+            <input type="text" name="nom_famille" value="{{ inputs.nom_famille }}">
         </label>
-        {% if errors.nom is defined %}
-        <span class="error">{{ errors.nom }}</span>
+        {% if errors.nom_famille is defined %}
+        <span class="error">{{ errors.nom_famille }}</span>
         {% endif %}
 
         <label class="champ-input">Adresse

@@ -18,7 +18,8 @@
             <input type="password" name="mdp">
         </label>
 
-        <a href="">Mot de passe oublié ?</a>
+
+        <a href="{{base}}/resetpwd/forgot-password">Mot de passe oublié ?</a>
         <input type="submit" class="bouton" value="Accéder à mon profil">
     </form>
 </div>
