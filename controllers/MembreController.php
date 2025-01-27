@@ -18,18 +18,17 @@ class MembreController
     }
 
     public function store($data){
-        print_r($data);
+
         $validator = new Validator;
-        $validator->field('prenom', $data['prenom'])->max(45)->required();
-        $validator->field('nom_famille', $data['nom_famille'])->max(45)->required();
+        $validator->field('prenom', $data['prenom'])->min(3)->max(45)->required();
+        $validator->field('nom_famille', $data['nom_famille'], 'Le nom de famille')->min(3)->max(45)->required();
         $validator->field('nom_utilisateur', $data['nom_utilisateur'], 'Le nom d\'utilisateur')->max(100)->required()->unique('Membre');
-        $validator->field('mdp', $data['mdp'], 'Le mot de passe')->min(6)->max(20);
+        $validator->field('mdp', $data['mdp'], 'Le mot de passe')->min(6)->max(20)->required();
         $validator->field('telephone', $data['telephone'], 'Le téléphone')->max(45);
         $validator->field('adresse', $data['adresse'], 'L\'adresse')->max(100);
         $validator->field('ville', $data['ville'], 'La ville')->max(50);
         $validator->field('province', $data['province'], 'La province')->max(50);
         $validator->field('code_postal', $data['code_postal'], 'Le code postal')->max(45);
-        $validator->field('pays_id', $data['pays_id'], "Le pays")->number();
 
         if ($validator->isSuccess()){
             $membre = new Membre;
@@ -45,7 +44,9 @@ class MembreController
             }
         } else {
             $errors = $validator->getErrors();
-            return View::render('membre/inscription', ['errors' => $errors, 'inputs' => $data]);
+            $paysModel = new Pays;
+            $pays = $paysModel->select('nom');
+            return View::render('membre/inscription', ['errors' => $errors, 'inputs' => $data, 'pays' => $pays]);
         }
     }
 
@@ -58,7 +59,7 @@ class MembreController
             $pays = $paysModel->select('nom');
             if ($selectId) {
                 return View::render('membre/profil', ['membre' => $selectId, 'pays' => $pays]);
-                // return View::render('membre/profil', ['membre' => $selectId]);
+
 
             } else {
                 return View::render('error', ['msg' => 'Ce profil n\'existe pas']);
@@ -115,4 +116,6 @@ class MembreController
         }
         return View::render('error');
     }
+
+
 }
