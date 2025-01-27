@@ -9,7 +9,7 @@ class ResetPassword
 {
     public function index()
     {
-        return View::render('forgot-password');
+        return View::render('resetpwd/forgot-password');
     }
 
     public function token() 
@@ -17,7 +17,7 @@ class ResetPassword
         if (isset($_POST['email'])) { 
             $token = uniqid(); 
 
-            $url = "http://localhost/projet/reset-password?token=" . $token; 
+            $url = "http://localhost/projet/resetpwd/reset-password?token=" . $token; 
 
             $message = "Voici le lien pour la réinitialisation du mot de passe : " . $url; 
 
@@ -29,7 +29,7 @@ class ResetPassword
                 $tokenUpdate = $membre->updateToken($token, $_POST['email']);
                 if ($tokenUpdate) { 
 
-                    return View::render('email-send-successfully'); 
+                    return View::render('resetpwd/email-send-successfully'); 
                 } else {
                     return View::render('error');
                 }
@@ -46,7 +46,7 @@ class ResetPassword
             $membre = new Membre;
             $email = $membre->recoveryToken($_GET['token']);
             if ($email) { 
-                return View::render('reset-password'); // 
+                return View::render('resetpwd/reset-password'); // 
 
             } else {
                 return View::render('error');
