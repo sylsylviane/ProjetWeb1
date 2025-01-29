@@ -16,7 +16,7 @@ abstract class CRUD extends \PDO
         if ($field == null) {
             $field = $this->primaryKey;
         }
-        $sql = "SELECT * FROM $this->table ORDER BY $field $order";
+        $sql = "SELECT * FROM `$this->table` ORDER BY $field $order";
         if ($stmt = $this->query($sql)) {
             return $stmt->fetchAll();
         } else {
@@ -24,6 +24,7 @@ abstract class CRUD extends \PDO
         }
     }
 
+    
     final public function selectId($value)
     {
         $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
@@ -32,7 +33,7 @@ abstract class CRUD extends \PDO
         $stmt->execute();
         $count = $stmt->rowCount();
         if ($count == 1) {
-            return $stmt->fetch();
+            return $stmt->fetch(); 
         } else {
             return false;
         }
@@ -69,7 +70,7 @@ abstract class CRUD extends \PDO
         }
         $fieldName = rtrim($fieldName, ', ');
 
-        $sql = "UPDATE $this->table SET $fieldName WHERE $this->primaryKey = :$this->primaryKey"; // SQL query pour mettre à jour les données dans la base de données en fonction de l'ID donné dans la requête URL 
+        $sql = "UPDATE $this->table SET $fieldName WHERE $this->primaryKey = :$this->primaryKey";
         $data[$this->primaryKey] = $id;
         $stmt = $this->prepare($sql);
         foreach ($data as $key => $value) {
@@ -98,9 +99,9 @@ abstract class CRUD extends \PDO
         }
     }
 
-    final function getFiveNewest()
+    final public function getSixNewest()
     {
-        $sql = "SELECT * FROM $this->table order by id DESC LIMIT 5";
+        $sql = "SELECT * FROM $this->table order by id DESC LIMIT 6";
         if ($stmt = $this->query($sql)) {
             return $stmt->fetchAll();
         } else {
@@ -123,7 +124,7 @@ abstract class CRUD extends \PDO
     }
 
 
-    function updateToken($token, $value)
+    final public function updateToken($token, $value)
     {
         $sql = "UPDATE $this->table SET token = :token WHERE courriel = :value"; 
         $stmt = $this->prepare($sql); 
@@ -138,7 +139,7 @@ abstract class CRUD extends \PDO
         }
     }
 
-    function recoveryToken($token){
+    final public function recoveryToken($token){
         $sql = "SELECT courriel FROM $this->table WHERE token = :token";
         $stmt = $this->prepare($sql);
         $stmt->bindValue(':token', $token);
@@ -147,7 +148,7 @@ abstract class CRUD extends \PDO
         return $email;
     }
 
-    function updatePassword($value, $value2){
+    final public function updatePassword($value, $value2){
         $sql = "UPDATE $this->table SET mdp = :mdp, token = NULL WHERE courriel = :courriel";
         $stmt = $this->prepare($sql);
         $stmt->bindValue(':mdp', $value);
@@ -158,4 +159,18 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
+
+    final public function selectByField($field, $value)
+    {
+        $sql = "SELECT * FROM $this->table WHERE $field = :field";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(':field', $value);
+
+        if ($stmt->execute()) {
+            return $stmt->fetchAll();
+        } else {
+            return false;
+        }
+    }
+
 }
