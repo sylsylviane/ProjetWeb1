@@ -5,7 +5,9 @@
   gap: 8px;
   min-width: 250px;
 }
-.champ-input input {
+.champ-input input,
+.champ-input textarea,
+.champ-input select {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid var(--couleur-bleu-pale);

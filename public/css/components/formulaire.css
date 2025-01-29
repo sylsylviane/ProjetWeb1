@@ -16,6 +16,7 @@
 }
 
 .formulaire input:not([type='submit']),
+.formulaire textarea,
 .formulaire select,
 .formulaire span {
   margin-top: 5px;
@@ -30,6 +31,10 @@
   }
 }
 
+.formulaire textarea {
+  resize: none;
+  height: 100px;
+}
 .formulaire span {
   border: 2px solid #df2121;
   padding: 0.5em;
