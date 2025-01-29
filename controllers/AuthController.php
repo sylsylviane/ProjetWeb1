@@ -41,7 +41,6 @@ class AuthController
     public function delete()
     {
         session_destroy();
-        TODO: //VALIDER LA REDIRECTION LOGIN OU
-        return View::redirect('login'); 
+        return View::redirect('accueil');
     }
 }

@@ -51,6 +51,8 @@ class ResetPassword
             } else {
                 return View::render('error');
             }
+        }else{
+            return View::render('error');
         }
         }
 

@@ -20,7 +20,7 @@ class MembreController
     public function store($data){
 
         $validator = new Validator;
-        $validator->field('prenom', $data['prenom'])->min(3)->max(45)->required();
+        $validator->field('prenom', $data['prenom'])->min(3)->max(45)->required(); 
         $validator->field('nom_famille', $data['nom_famille'], 'Le nom de famille')->min(3)->max(45)->required();
         $validator->field('nom_utilisateur', $data['nom_utilisateur'], 'Le nom d\'utilisateur')->max(100)->required()->unique('Membre');
         $validator->field('mdp', $data['mdp'], 'Le mot de passe')->min(6)->max(20)->required();
@@ -29,7 +29,7 @@ class MembreController
         $validator->field('ville', $data['ville'], 'La ville')->max(50);
         $validator->field('province', $data['province'], 'La province')->max(50);
         $validator->field('code_postal', $data['code_postal'], 'Le code postal')->max(45);
-
+        
         if ($validator->isSuccess()){
             $membre = new Membre;
             $data['courriel'] = $data['nom_utilisateur'];
@@ -83,7 +83,7 @@ class MembreController
                 return View::render('error');
             }
         }
-        return View::render('error');
+        return View::render('login');
     }
 
     public function update($data = [], $get = [])
