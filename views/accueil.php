@@ -1,7 +1,7 @@
 {{include('layouts/header.php', {title: 'Accueil'})}}
 
 <div class="fil-ariane">
-    <a href="index.html"><small>Accueil</small></a>
+    <a href="{{base}}/accueil"><small>Accueil</small></a>
     <i class="ri-arrow-right-s-line"></i>
 </div>
 
@@ -75,96 +75,32 @@
     </div>
 </section>
 
-<!-- <section>
+<section>
     <header>
-        <h2>En vedette</h2>
+        <h2>Nouveautés</h2>
     </header>
     <div class="grille petite">
+        {% for timbre in timbres %}
         <article class="carte petite conteneur-carte">
             <picture>
-                <img src="{{asset}}/img/timbre-10.webp" alt="Image de timbre 10">
+                {% for image in images %}
+                {% if timbre.id == image.timbre_id %}
+                <img src="{{asset}}/uploads/{{image.image_url}}" alt="">
+                {% endif %}
+                {% endfor %}
             </picture>
-            <h2>Australia #25a - Roi George V (1923)</h2>
+            <h2>{{ timbre.nom }}</h2>
             <div class="conteneur-flex">
                 <div>
-                    <h3>Offre actuelle</h3>
-                    <h4>150$</h4>
+                    <!-- <h3>Offre actuelle</h3>
+                    <h4>150$</h4> -->
                 </div>
                 <i class="ri-heart-line"></i>
             </div>
         </article>
-
-        <article class="carte petite conteneur-carte">
-            <picture>
-                <img src="{{asset}}/img/timbre-2.webp" alt="Image de timbre 2">
-            </picture>
-            <h2>Reine Elizabeth II - 4 cents 1953</h2>
-            <div class="conteneur-flex">
-                <div>
-                    <h3>Offre actuelle</h3>
-                    <h4>150$</h4>
-                </div>
-                <i class="ri-heart-line"></i>
-            </div>
-        </article>
-
-        <article class="carte petite conteneur-carte">
-            <picture>
-                <img src="{{asset}}/img/timbre-3.webp" alt="Image de timbre 3">
-            </picture>
-            <h2>Timbre Marianne de l’avenir - Lettre verte</h2>
-            <div class="conteneur-flex">
-                <div>
-                    <h3>Offre actuelle</h3>
-                    <h4>150$</h4>
-                </div>
-                <i class="ri-heart-line"></i>
-            </div>
-        </article>
-
-        <article class="carte petite conteneur-carte">
-            <picture>
-                <img src="{{asset}}/img/timbre-5.webp" alt="Image de timbre 5">
-            </picture>
-            <h2>Timbre tricentenaire de l’académie française</h2>
-            <div class="conteneur-flex">
-                <div>
-                    <h3>Offre actuelle</h3>
-                    <h4>150$</h4>
-                </div>
-                <i class="ri-heart-line"></i>
-            </div>
-        </article>
-
-        <article class="carte petite conteneur-carte">
-            <picture>
-                <img src="{{asset}}/img/timbre-4.webp" alt="Image de timbre 4">
-            </picture>
-            <h2>USA Statue de la liberté 3 cents « Violet oblitéré - 1954</h2>
-            <div class="conteneur-flex">
-                <div>
-                    <h3>Offre actuelle</h3>
-                    <h4>150$</h4>
-                </div>
-                <i class="ri-heart-line"></i>
-            </div>
-        </article>
-
-        <article class="carte petite conteneur-carte">
-            <picture>
-                <img src="{{asset}}/img/timbre-9.webp" alt="Image de timbre 9">
-            </picture>
-            <h2>Sabine de Gandon - France 5€</h2>
-            <div class="conteneur-flex">
-                <div>
-                    <h3>Offre actuelle</h3>
-                    <h4>20$</h4>
-                </div>
-                <i class="ri-heart-line"></i>
-            </div>
-        </article>
+        {% endfor %}
     </div>
-</section> -->
+</section>
 
 <section class="appel-a-action">
     <header>

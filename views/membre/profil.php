@@ -1,4 +1,10 @@
 {{include('layouts/header.php', {title: 'Profil membre'})}}
+
+<div class="fil-ariane">
+    <a href="{{base}}/accueil"><small>Accueil</small></a>
+    <i class="ri-arrow-right-s-line"></i>
+    <a href="{{base}}/membre/profil?id={{membre.id}}"><small>Mon profil</small></a>
+</div>
 <div class="formulaire">
     <h1>Mon profil</h1>
     <p><strong>Prénom: </strong>{{ membre.prenom }}</p>

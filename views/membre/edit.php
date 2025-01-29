@@ -1,4 +1,10 @@
 {{include('layouts/header.php', {title: 'Modifier profil'})}}
+
+<div class="fil-ariane">
+    <a href="{{base}}/accueil"><small>Accueil</small></a>
+    <i class="ri-arrow-right-s-line"></i>
+    <a href=""><small>Modifier mon profil</small></a>
+</div>
 <div>
     <h2>Modifier mon profil</h2>
     <form method="post" class="formulaire">

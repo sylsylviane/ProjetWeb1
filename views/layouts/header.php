@@ -17,12 +17,15 @@
     </script>
 </head>
 
-<body>
+<body class="flex">
     <div class="top-banniere">
         {% if guest is empty %}
         <p> Bienvenue {{ session.user_name }}</p>
         <a href="{{base}}/membre/profil?id={{session.user_id}}"><i class="ri-user-3-line"></i></a>
+        <a href="{{base}}/timbre">Vendre</a>
+        <a href="{{base}}/timbre/show">Voir mes timbres</a>
         {% endif %}
+
         <form class="champ-input">
             <label class="champ-input__recherche" aria-label="recherche">
                 <input type="search" placeholder="Écrivez votre recherche...">
@@ -68,6 +71,8 @@
                 <li class="opacite"><a href="{{base}}/membre/inscription">Devenir membre</a></li>
                 <li class="opacite"><a href="{{base}}/login">Se connecter</a></li>
                 {% else %}
+                <li class="opacite"><a href="{{base}}/timbre">Vendre</a></li>
+                <li class="opacite"><a href="{{base}}/membre/profil?id={{session.user_id}}">Mon profil</a></li>
                 <li class="opacite"><a href="{{base}}/logout">Se déconnecter</a></li>
                 {% endif %}
 

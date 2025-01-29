@@ -1,4 +1,10 @@
 {{include('layouts/header.php', {title: 'Inscription'})}}
+
+<div class="fil-ariane">
+    <a href="{{base}}/accueil"><small>Accueil</small></a>
+    <i class="ri-arrow-right-s-line"></i>
+    <a href="{{base}}/membre/inscription"><small>S'inscrire</small></a>
+</div>
 <div>
     <h2>Inscription</h2>
     <form method="post" class="formulaire">
@@ -56,7 +62,7 @@
             <select name="pays_id">
                 <option value="">Select</option>
                 {% for pays in pays %}
-                <option value="{{pays.id}}" {% if(pays.id == inputs.pays_id) %} selected {%endif%}>{{ pays.nom }}</option>
+                <option value="{{pays.id}}" {% if(pays.id == inputs.pays_id) %} selected {%endif%}>{{ pays.nom }}</option>  
                 {% endfor %}
             </select>
         </label>
@@ -74,7 +80,7 @@
 
         <label class="champ-input">Numéro de téléphone
             <input type="text" name="telephone" value="{{ inputs.telephone }}">
-        </label>
+        </label> 
         {% if errors.telephone is defined %}
         <span class="error">{{ errors.telephone }}</span>
         {% endif %}

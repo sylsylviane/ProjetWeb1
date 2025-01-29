@@ -1,4 +1,10 @@
 {{include('layouts/header.php', {title: 'Connexion'})}}
+
+<div class="fil-ariane">
+    <a href="{{base}}/accueil"><small>Accueil</small></a>
+    <i class="ri-arrow-right-s-line"></i>
+    <a href="{{base}}/login"><small>Se connecter</small></a>
+</div>
 <div>
     <h2>Connexion</h2>
     <form method="post" class="formulaire">
