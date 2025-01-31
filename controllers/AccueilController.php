@@ -2,35 +2,26 @@
 
 namespace App\Controllers;
 
-use App\Models\Timbre;
+use App\Models\Enchere;
 use App\Providers\View;
-use App\Models\Condition;
-use App\Models\Couleur;
-use App\Models\Pays;
 use App\Models\Image;
+use App\Models\Timbre;
 
 class AccueilController
 {
-
     public function index()
     {
+        $enchere = new Enchere;
+        $encheres = $enchere->getSixNewest();
+
         $timbre = new Timbre;
-        $timbres = $timbre->getSixNewest();
-
-        $paysModel = new Pays;
-        $pays = $paysModel->select('nom');
-
-        $condition = new Condition;
-        $conditions = $condition->select('nom');
-
-        $couleur = new Couleur;
-        $couleurs = $couleur->select('nom');
+        $timbres = $timbre->select('nom');
 
         $image = new Image;
         $images = $image->select('timbre_id');
 
-        if ($timbres) {
-            return View::render('accueil', ['timbres' => $timbres, 'pays' => $pays, 'conditions' => $conditions, 'couleurs' => $couleurs, 'images' => $images]);
+        if ($encheres) {
+            return View::render('accueil', ['encheres' => $encheres, 'images' => $images, 'timbres' => $timbres]);
         } else {
             return View::render('error');
         }
