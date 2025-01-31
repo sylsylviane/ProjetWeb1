@@ -28,6 +28,12 @@
   & span {
     font-weight: 500;
   }
+
+  & i {
+        position: absolute;
+        top: 0;
+        right: 0;
+  }
 }
 
 .carte.petite {
