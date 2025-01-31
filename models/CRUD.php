@@ -109,6 +109,20 @@ abstract class CRUD extends \PDO
         }
     }
 
+    final public function getFirst($field, $value)
+    {
+        $sql = "SELECT * FROM $this->table WHERE $field = :field ORDER BY id ASC LIMIT 1";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(':field', $value);
+
+        if ($stmt->execute()) {
+            return $stmt->fetch();
+        } else {
+            return false;
+        }
+    }
+
+
     final public function unique($field, $value)
     {
         $sql = "SELECT * FROM $this->table WHERE $field = :$field";
@@ -123,14 +137,13 @@ abstract class CRUD extends \PDO
         }
     }
 
-
-    final public function updateToken($token, $value)
+    final public function updateField($field, $value, $conditionField, $conditionValue)
     {
-        $sql = "UPDATE $this->table SET token = :token WHERE courriel = :value"; 
-        $stmt = $this->prepare($sql); 
+        $sql = "UPDATE $this->table SET $field = :value WHERE $conditionField = :conditionValue";
+        $stmt = $this->prepare($sql);
 
-        $stmt->bindValue(':token', $token);
         $stmt->bindValue(':value', $value);
+        $stmt->bindValue(':conditionValue', $conditionValue);
 
         if ($stmt->execute()) {
             return true;
@@ -138,6 +151,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
+
 
     final public function recoveryToken($token){
         $sql = "SELECT courriel FROM $this->table WHERE token = :token";
