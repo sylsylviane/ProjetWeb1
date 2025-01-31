@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Image;
 use App\Providers\View;
+use App\Models\Timbre;
 
 class ImageController
 {
@@ -73,18 +74,53 @@ class ImageController
         } else { // if everything is ok, try to upload file
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 $imageUrl = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
-
                 $image = new Image;
-                $insert = $image->insert(['image_url' => $imageUrl, 'timbre_id' => $_GET['id']]);
+                //On insère l'image comme l'image principale
+                $insert = $image->insert(['image_url' => $imageUrl, 'timbre_id' => $_GET['id'], 'image_princ' => 'non']); //retourne le id de l'image
 
                 if ($insert) {
-                    $image = new Image;
-                    $images = $image->selectByField('timbre_id', $_GET['id']);
-                    return View::render('timbre/upload-img', ['images' => $images, 'msg' => 'Bravo, votre fichier a bien été téléchargé.']);
+                    //On selectionne la première image 
+                    $firstImg = $image->getFirst('timbre_id', $_GET['id']);
+
+                    if ($firstImg) {
+                        $image->updateField('image_princ', 'oui', 'id', $firstImg['id']);
+                    }
+                    $images = $image->selectByField('timbre_id', $_GET['id']); //retourne les images correspondant à l'id de l'url
+                    return View::render('timbre/upload-img', ['images' => $images, 'msg' => 'Votre fichier a bien été téléchargé.']);
                 }
             } else {
                 return View::render('error');
             }
+        }
+    }
+
+    public function deleteImage($data = [])
+    {
+
+        $get = $_GET['id'];
+        $image = new Image;
+
+        $imageData = $image->selectByField('id', $data['id']);
+
+        if ($imageData) {
+            // Construire le chemin du fichier
+            $filePath = 'public/uploads/' . $imageData[0]['image_url'];
+
+            // Supprimer le fichier si il existe
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+
+            $delete = $image->delete($data['id']);
+
+            if ($delete) {
+                $images = $image->selectByField('timbre_id', $_GET['id']);
+                return View::redirect('timbre/upload-img?id=' . $get, ['images' => $images]);
+            } else {
+                return View::redirect('error');
+            }
+        } else {
+            return View::redirect('error');
         }
     }
 }
