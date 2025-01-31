@@ -8,6 +8,7 @@ use App\Models\Couleur;
 use App\Providers\Validator;
 use App\Models\Timbre;
 use App\Models\Image;
+use App\Models\Enchere;
 
 class TimbreController
 {
@@ -162,30 +163,47 @@ class TimbreController
                 $couleur = new Couleur;
                 $couleurs = $couleur->select('nom');
 
-                $image = new Image;
-                $images = $image->select('timbre_id');
-
                 return View::render('timbre/edit', ['errors' => $errors, 'inputs' => $data, 'pays' => $pays, 'conditions' => $conditions, 'couleurs' => $couleurs]);
             }
         }
         return View::render('error');
     }
 
-    //Méthode pour supprimer les timbres et les images associées
+    //Méthode pour supprimer les timbres, les images et les enchères associées
 
-    // public function delete($data)
-    // {
-    //     $timbre = new Timbre;
-    //     $image = new Image;
+    public function deleteTimbreImages($data)
+    {
+        $image = new Image;
+        $imagesData = $image->selectByField('timbre_id', $data['id']);
 
-    //     $delete = $timbre->delete($data['id']);
+        if ($imagesData) {
 
-    //     //Sélectionner l'image dont timbre_id = $data['id']
+            foreach ($imagesData as $imageData){
+                // Construire le chemin du fichier
+                $filePath = 'public/uploads/' . $imageData['image_url'];
+ 
+                // Supprimer le fichier si il existe
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+                $image->delete($imageData['id']);
+            }
+        }
+        //Supprimer timbre 
+        $timbre = new Timbre;
+        $deleteTimbre = $timbre->delete($data['id']);
+        if ($deleteTimbre){
+            $enchere = new Enchere;
+            $enchereData = $enchere->selectByField('timbre_id', $data['id']);
+            if ($enchereData){
 
-    //     if ($delete) {
-            
-    //         return View::redirect('timbre/show');
-    //     }
-    //     return View::render('error');
-    // }
+                $enchere->delete($enchereData[0]['id']);
+                return View::redirect('timbre/show');
+            }else{
+                return View::redirect('timbre/show');
+            }
+        }else{
+            return View::render('error');
+        }
+    }
 }
