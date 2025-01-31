@@ -7,74 +7,65 @@
 <header>
     <h1>Voyez tous vos timbres</h1>
 </header>
-
-<section>
-    <header>
-        <h2 class="visually-hidden">Titre de section</h2>
-    </header>
-    <p>{{msg}}</p>
-    <div class="grille">
-
-        {% for timbre in timbres %}
-        <article class="carte conteneur-carte">
+{% for timbre in timbres %}
+<div class="carte-detaillee">
+    <!-- Images -->
+    <div>
+        <div>
+            <figure>
+                {% for image in images %}
+                {% if timbre.id == image.timbre_id and image.image_princ == 'non' %}
+                <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre">
+                {% endif %}
+                {% endfor %}
+            </figure>
+        </div>
+        <figure>
+            <!-- <i class="ri-zoom-in-line"></i> -->
             {% for image in images %}
-            {% if timbre.id == image.timbre_id %}
-            <img src="{{asset}}/uploads/{{image.image_url}}" alt="">
+            {% if timbre.id == image.timbre_id and image.image_princ == 'oui' %}
+            <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre" width="300">
             {% endif %}
             {% endfor %}
-            <h2><strong>Nom: </strong>{{ timbre.nom }}</h2>
-            <div>
-                <p><strong>Pays: </strong>
-                    {% for pays in pays %}
-                    {% if pays.id == timbre.pays_id %}
-                    {{pays.nom}}
-                    {% endif %}
-                    {% endfor %}
-                </p>
-                <p>
-                    <strong>Année de création: </strong>{{ timbre.date }}
-                </p>
-                <p>
-                    <strong>Tirage: </strong>{{ timbre.tirage }}
-                </p>
-                <p>
-                    <strong>Dimension: </strong>{{ timbre.dimension }}
-                </p>
-            </div>
-            <div>
-                <p><strong>Description: </strong>{{ timbre.description }}</p>
-            </div>
-            <div>
-                <p>
-                    <strong>Condition: </strong>
-                    {% for condition in conditions %}
-                    {% if condition.id == timbre.condition_id %}
-                    {{condition.nom}}
-                    {% endif %}
-                    {% endfor %}
-                </p>
-                <p>
-                    <strong>Certification: </strong>{{timbre.certification}}
-
-                </p>
-                <p><strong>Couleur: </strong>
-                    {% for couleur in couleurs %}
-                    {% if couleur.id == timbre.couleur_id %}
-                    {{couleur.nom}}
-                    {% endif %}
-                    {% endfor %}
-                </p>
-            </div>
-            <div class="conteneur-flex">
-                <a href="{{base}}/timbre/edit?id={{timbre.id}}" class="bouton">Modifier</a>
-            </div>
-            <!-- <form action="{{ base }}/timbre/delete" method="post">
-                <input type="hidden" name="id" value="{{ timbre.id }}">
-                <button type="submit" class="bouton bouton-or">Delete</button>
-            </form> -->
-        </article>
-        {% endfor %}
+        </figure>
     </div>
-</section>
+
+    <article class="conteneur-carte carte-detaillee_texte">
+        <header>
+            <h2>{{timbre.nom}}</h2>
+        </header>
+        <div>
+            <div>
+                <p><span>Date de création: </span> {{timbre.date}}</p>
+                <p><span>Certifié: </span> {{timbre.certification}}</p>
+                {% for couleur in couleurs %}
+                {% if couleur.id == timbre.couleur_id %}
+                <p><span>Couleur: </span> {{couleur.nom}}</p>
+                {% endif %}
+                {% endfor %}
+                {% for pays in pays %}
+                {% if pays.id == timbre.pays_id %}
+                <p><span>Pays d'origine: </span> {{pays.nom}}</p>
+                {% endif %}
+                {% endfor %}
+                {% for condition in conditions %}
+                {% if condition.id == timbre.condition_id %}
+                <p><span>Condition: </span> {{condition.nom}}</p>
+                {% endif %}
+                {% endfor %}
+                <p><span>Tirage: </span>{{timbre.tirage}}</p>
+                <p><span>Dimension: </span> {{timbre.dimension}}</p>
+            </div>
+        </div>
+        <div class="conteneur-flex">
+            <a href="{{base}}/timbre/edit?id={{timbre.id}}" class="bouton">Modifier</a>
+            <form action="{{ base }}/timbre/delete?id={{timbre.id}}" method="post">
+                <input type="hidden" name="id" value="{{ timbre.id }}">
+                <button type="submit" class="bouton">Supprimer</button>
+            </form>
+        </div>
+    </article>
+</div>
+{% endfor %}
 
 {{include('layouts/footer.php')}}

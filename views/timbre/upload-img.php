@@ -9,12 +9,18 @@
     <header>
         <h1>Vos images</h1>
     </header>
-    {% for image in images %}
-    <p>{{image.image_url}}</p>
-    <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image du timbre" width="200">
-    {% endfor %}
+    <div class="grille petite">
+        {% for image in images %}
+        <div class="carte">
+            <form action="{{ base }}/image/delete?id={{image.timbre_id}}" method="post">
+                <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image du timbre" width="200">
+                <input type="hidden" name="id" value="{{ image.id }}">
+                <button type="submit"><i class="ri-close-line"></i></button>
+             </form>
+        </div>
+        {% endfor %}
+    </div>
 </section>
-
 
 <section>
     <header>
@@ -24,7 +30,8 @@
         <header>
             <h2>Sélectionner une image:</h2>
         </header>
-        <h3>{{msg}}</h3>
+        <p>La première image téléchargée sera l'image principale de votre timbre.</p>
+        <p>{{msg}}</p>
 
         <input type="file" name="fileToUpload" id="fileToUpload" required>
         <input type="submit" value="Upload Image" name="submit" class="bouton bouton-or">

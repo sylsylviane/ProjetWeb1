@@ -80,24 +80,34 @@
         <h2>Nouveautés</h2>
     </header>
     <div class="grille petite">
-        {% for timbre in timbres %}
-        <article class="carte petite conteneur-carte">
+        {% for enchere in encheres %}
+
+        <a href="{{base}}/enchere?id={{enchere.timbre_id}}" class="carte petite conteneur-carte ">
+
             <picture>
                 {% for image in images %}
-                {% if timbre.id == image.timbre_id %}
-                <img src="{{asset}}/uploads/{{image.image_url}}" alt="">
+                {% if enchere.timbre_id == image.timbre_id and image.image_princ == 'oui' %}
+                <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre">
                 {% endif %}
                 {% endfor %}
             </picture>
-            <h2>{{ timbre.nom }}</h2>
+            {% for timbre in timbres %}
+            {% if timbre.id == enchere.timbre_id %}
+            <header>
+                <h2>{{ timbre.nom }}</h2>
+            </header>
             <div class="conteneur-flex">
                 <div>
-                    <!-- <h3>Offre actuelle</h3>
-                    <h4>150$</h4> -->
+                    <h3>Prix plancher</h3>
+                    <h4>{{enchere.prix_plancher}}$</h4>
                 </div>
                 <i class="ri-heart-line"></i>
             </div>
-        </article>
+            {% endif %}
+            {% endfor %}
+
+        </a>
+
         {% endfor %}
     </div>
 </section>
