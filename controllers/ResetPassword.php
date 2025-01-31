@@ -26,7 +26,7 @@ class ResetPassword
             
             if (mail($_POST['email'], 'Mot de passe oublié', $message, $headers)) { 
                 $membre = new Membre; 
-                $tokenUpdate = $membre->updateToken($token, $_POST['email']);
+                $tokenUpdate = $membre->updateField('token', $token, 'courriel', $_POST['email']);
                 if ($tokenUpdate) { 
 
                     return View::render('resetpwd/email-send-successfully'); 
@@ -46,8 +46,7 @@ class ResetPassword
             $membre = new Membre;
             $email = $membre->recoveryToken($_GET['token']);
             if ($email) { 
-                return View::render('resetpwd/reset-password'); // 
-
+                return View::render('resetpwd/reset-password'); 
             } else {
                 return View::render('error');
             }
