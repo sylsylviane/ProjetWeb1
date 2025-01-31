@@ -10,7 +10,10 @@ use App\Controllers\ImageController;
  
 
 Route::get('/accueil', 'AccueilController@index');
-// Route::get('/portail-encheres', 'PortailController@index');
+Route::get('/portail-encheres', 'EnchereController@showPortailEncheres');
+Route::get('/enchere', 'EnchereController@showEnchere');
+Route::post('/image/delete', 'ImageController@deleteImage');
+Route::post('/timbre/delete', 'TimbreController@deleteTimbreImages');
 
 Route::get('/membre/inscription', 'MembreController@create');
 Route::post('/membre/inscription', 'MembreController@store');
