@@ -122,6 +122,19 @@ abstract class CRUD extends \PDO
         }
     }
 
+    final public function getLast($field, $value)
+    {
+        $sql = "SELECT * FROM $this->table WHERE $field = :field ORDER BY id DESC LIMIT 1";
+        $stmt = $this->prepare($sql);
+        $stmt->bindValue(':field', $value);
+
+        if ($stmt->execute()) {
+            return $stmt->fetch();
+        } else {
+            return false;
+        }
+    }
+
 
     final public function unique($field, $value)
     {

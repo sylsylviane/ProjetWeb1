@@ -10,10 +10,6 @@ use App\Controllers\ImageController;
  
 
 Route::get('/accueil', 'AccueilController@index');
-Route::get('/portail-encheres', 'EnchereController@showPortailEncheres');
-Route::get('/enchere', 'EnchereController@showEnchere');
-Route::post('/image/delete', 'ImageController@deleteImage');
-Route::post('/timbre/delete', 'TimbreController@deleteTimbreImages');
 
 Route::get('/membre/inscription', 'MembreController@create');
 Route::post('/membre/inscription', 'MembreController@store');
@@ -38,11 +34,15 @@ Route::post('/timbre/create', 'TimbreController@store');
 Route::get('/timbre/show', 'TimbreController@show');
 Route::get('/timbre/edit', 'TimbreController@edit');
 Route::post('/timbre/edit', 'TimbreController@update');
-Route::post('/timbre/delete', 'TimbreController@delete');
-
+Route::post('/timbre/delete', 'TimbreController@deleteTimbreImages');
 
 Route::get('/timbre/upload-img', 'ImageController@index');
 Route::post('/timbre/upload-img', 'ImageController@uploadImage');
+Route::post('/image/delete', 'ImageController@deleteImage');
+
+Route::get('/portail-encheres', 'EnchereController@showPortailEncheres');
+Route::get('/enchere', 'EnchereController@showEnchere');
+Route::post('/enchere', 'MiseController@miser');
 
 Route::dispatch();
 ?>

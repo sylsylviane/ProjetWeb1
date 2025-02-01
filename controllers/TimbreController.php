@@ -170,7 +170,7 @@ class TimbreController
     }
 
     //Méthode pour supprimer les timbres, les images et les enchères associées
-    TODO: //EMPECHER LA SUPPRESSION D'UN TIMBRE SI UNE ENCHÈRE EST ACTIVÉE
+    //TODO: //EMPECHER LA SUPPRESSION D'UN TIMBRE SI UNE ENCHÈRE EST ACTIVÉEE
     public function deleteTimbreImages($data)
     {
         $image = new Image;
