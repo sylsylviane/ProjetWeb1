@@ -12,12 +12,6 @@
 <p>{{ msg }}</p>
 <section>
     <form method="post" class="formulaire">
-        <!-- {% if errors is defined %}
-        {% for error in errors %}
-        <span>{{ error }}</span>
-        {% endfor %}
-        {% endif %} -->
-
         <input type="hidden" name="id" value="{{ timbre.id }}">
 
         <label class="champ-input">Nom du timbre

@@ -1,12 +1,14 @@
 {{include('layouts/header.php', {title: 'Enchere'})}}
-
+{% for enchere in encheres %}
 <div class="fil-ariane">
     <a href="{{base}}/accueil"><small>Accueil</small></a>
     <i class="ri-arrow-right-s-line"></i>
-    <a href="{{base}}/enchere"><small>Portail d'enchères</small></a>
+    <a href="{{base}}/portail-encheres"><small>Portail d'enchères</small></a>
+    <i class="ri-arrow-right-s-line"></i>
+    <a href="{{base}}/enchere"><small>Enchère {{enchere.titre}}</small></a>
 </div>
 <!-- Fiche produit -->
-{% for enchere in encheres %}
+
 <div class="carte-detaillee">
     <!-- Images -->
     <div>
@@ -38,6 +40,7 @@
         <div>
             <div>
                 <p><span>Date de création: </span> {{timbre.date}}</p>
+                <p><span>Description: </span> {{timbre.description}}</p>
                 <p><span>Certifié: </span> {{timbre.certification}}</p>
                 {% for couleur in couleurs %}
                 {% if couleur.id == timbre.couleur_id %}
@@ -94,22 +97,28 @@
             <header>
                 <h2>Offre actuelle</h2>
             </header>
-            <h3>150$</h3>
-            <i class="ri-time-line"><small>Il reste 6h</small></i>
+            {% for mise in mises %}
+            {% if mise.offre_actuelle == 'oui' and mise.enchere_id == enchere.id %}
+            <h3>{{mise.montant}}$</h3>
+            {% endif %}
+            {% endfor %}
+            <!-- <i class="ri-time-line"><small>Il reste 6h</small></i> -->
         </div>
 
         <div>
-            <form>
+            <form method="post">
                 <label>Placer une mise
-                    <input type="number" placeholder="$">
+                    <input type="number" placeholder="{{enchere.prix_plancher}}$" required min="{{enchere.prix_plancher}}" name="montant">
                 </label>
-                <div class="bouton bouton-or-plein">Enchérir</div>
+
+                <button type="submit" class="bouton bouton-or-plein">Enchérir</button>
             </form>
+            {{msg}}
         </div>
 
         <!-- Bas de la carte détaillée -->
         <div class="carte-detaillee_texte_info_supp">
-            <img src="img/paiement.webp" alt="Icone de paiement">
+            <img src="{{asset}}/img/paiement.webp" alt="Icone de paiement">
             <div>
                 <i class="ri-truck-line">
                     <small>Livraison gratuite, arrive d'ici mar. 3 déc.</small></i>

@@ -4,9 +4,9 @@
     <i class="ri-arrow-right-s-line"></i>
     <a href="{{base}}/timbre/show"><small>Mes timbres</small></a>
 </div>
-<header>
+<!-- <header>
     <h1>Voyez tous vos timbres</h1>
-</header>
+</header> -->
 {% for timbre in timbres %}
 <div class="carte-detaillee">
     <!-- Images -->

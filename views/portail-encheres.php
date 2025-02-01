@@ -5,6 +5,7 @@
     <i class="ri-arrow-right-s-line"></i>
     <a href="{{base}}/portail-encheres"><small>Portail d'enchères</small></a>
 </div>
+<h1>{{msg}}</h1>
 <div class="grille">
 
     {% for enchere in encheres %}
@@ -20,8 +21,12 @@
         {% if timbre.id == enchere.timbre_id %}
         <h2>{{timbre.nom}}</h2>
         <div>
-            <h3>Prix plancher</h3>
+            <h3>Offre actuelle</h3>
+            {% for mise in mises %}
+            {% if mise.offre_actuelle == 'oui' and mise.enchere_id == enchere.id %}
             <h4>{{enchere.prix_plancher}}$</h4>
+            {% endif %}
+            {% endfor %}
         </div>
         <div>
             <p><span>Date de début:</span> {{enchere.date_debut}}</p>
@@ -39,7 +44,7 @@
         {% endif %}
         {% endfor %}
         <div class="conteneur-flex">
-            <a href="{{base}}/enchere?id={{enchere.timbre_id}}" class="bouton">Enchérir</a>
+            <a href="{{base}}/enchere?id={{enchere.id}}" class="bouton">Enchérir</a>
             <i class="ri-heart-line"></i>
         </div>
     </article>
