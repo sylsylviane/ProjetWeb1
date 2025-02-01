@@ -4,10 +4,15 @@ namespace App\Controllers;
 
 use App\Models\Image;
 use App\Providers\View;
-use App\Models\Timbre;
+use App\Providers\Auth;
 
 class ImageController
 {
+    // //Vérifie l'authentification dans le constructeur de UserController, garantissant qu'aucune des méthodes de TimbreController n'est accessible sans authentification.
+    public function __construct()
+    {
+        Auth::session();
+    }   
 
     public function index()
     {

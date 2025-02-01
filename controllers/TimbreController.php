@@ -11,7 +11,7 @@ use App\Models\Image;
 use App\Models\Enchere;
 
 class TimbreController
-{
+{ 
     // //Vérifie l'authentification dans le constructeur de UserController, garantissant qu'aucune des méthodes de TimbreController n'est accessible sans authentification.
     public function __construct()
     {
@@ -170,7 +170,7 @@ class TimbreController
     }
 
     //Méthode pour supprimer les timbres, les images et les enchères associées
-
+    TODO: //EMPECHER LA SUPPRESSION D'UN TIMBRE SI UNE ENCHÈRE EST ACTIVÉE
     public function deleteTimbreImages($data)
     {
         $image = new Image;
