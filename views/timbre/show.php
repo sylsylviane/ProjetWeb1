@@ -10,25 +10,27 @@
 {% for timbre in timbres %}
 <div class="carte-detaillee">
     <!-- Images -->
-    <div>
-        <div>
-            <figure>
-                {% for image in images %}
-                {% if timbre.id == image.timbre_id and image.image_princ == 'non' %}
-                <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre">
-                {% endif %}
-                {% endfor %}
-            </figure>
-        </div>
+
+    <div class="miniature-show">
+    <!-- <div> -->
+
         <figure>
-            <!-- <i class="ri-zoom-in-line"></i> -->
             {% for image in images %}
-            {% if timbre.id == image.timbre_id and image.image_princ == 'oui' %}
-            <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre" width="300">
+            {% if timbre.id == image.timbre_id and image.image_princ == 'non' %}
+            <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre 1">
             {% endif %}
             {% endfor %}
         </figure>
     </div>
+    <div id="first" class="img-container">
+        {% for image in images %}
+        {% if timbre.id == image.timbre_id and image.image_princ == 'oui' %}
+        <img id="img" src="{{asset}}/uploads/{{image.image_url}}" alt="Zoom Image" style="width: 100%; height: 100%;">
+        <!-- <span id="lens"></span> -->
+        {% endif %}
+        {% endfor %}
+    </div>
+    <!-- <div id="second" class="img-container"></div> -->
 
     <article class="conteneur-carte carte-detaillee_texte">
         <header>

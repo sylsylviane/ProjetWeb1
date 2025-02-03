@@ -12,9 +12,12 @@
     <link rel="stylesheet" href="https://use.typekit.net/jqs4wrb.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
     <script type="module" src="{{ asset ~ 'js/pages/index.js' }}"></script>
+    <script type="module" src="{{ asset ~ 'js/zoom-img.js' }}"></script>
+
     <script>
         const assetPath = "{{ asset }}";
     </script>
+
 </head>
 
 <body class="flex">
@@ -25,7 +28,6 @@
         <a href="{{base}}/timbre">Vendre</a>
         <a href="{{base}}/timbre/show">Voir mes timbres</a>
         {% endif %}
-
         <form class="champ-input">
             <label class="champ-input__recherche" aria-label="recherche">
                 <input type="search" placeholder="Écrivez votre recherche...">
@@ -46,7 +48,6 @@
             <i class="ri-sun-line"></i>
         </div>
     </div>
-
     <header>
         <h1><a href="{{base}}/accueil"><img src="{{asset}}/img/logo-2-alt.png" alt="Logo Stampee" class="logo"></a></h1>
         <nav class="nav-princ">
@@ -75,7 +76,6 @@
                 <li class="opacite"><a href="{{base}}/membre/profil?id={{session.user_id}}">Mon profil</a></li>
                 <li class="opacite"><a href="{{base}}/logout">Se déconnecter</a></li>
                 {% endif %}
-
             </ul>
             {% if guest %}
             <div class="bouton bouton-or"><a href="{{base}}/membre/inscription">Devenir membre</a></div>
@@ -85,5 +85,3 @@
             {% endif %}
         </nav>
     </header>
-
-    <main id="region-main">

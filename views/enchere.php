@@ -10,26 +10,26 @@
 <!-- Fiche produit -->
 
 <div class="carte-detaillee">
-    <!-- Images -->
-    <div>
-        <div>
-            <figure>
-                {% for image in images %}
-                {% if enchere.timbre_id == image.timbre_id and image.image_princ == 'non'%}
-                <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre 1">
-                {% endif %}
-                {% endfor %}
-            </figure>
-        </div>
+    <div class="miniature">
         <figure>
-            <i class="ri-zoom-in-line"></i>
             {% for image in images %}
-            {% if enchere.timbre_id == image.timbre_id and image.image_princ == 'oui' %}
-            <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre">
+            {% if enchere.timbre_id == image.timbre_id and (image.image_princ == 'non' or image.image_princ == 'oui')%}
+            <img src="{{asset}}/uploads/{{image.image_url}}" alt="Image de timbre 1">
             {% endif %}
             {% endfor %}
         </figure>
     </div>
+    <div id="first" class="img-container">
+        {% for image in images %}
+        {% if enchere.timbre_id == image.timbre_id and image.image_princ == 'oui' %}
+        <img id="img" src="{{asset}}/uploads/{{image.image_url}}" alt="Zoom Image" style="width: 100%; height: 100%;">
+        <span id="lens"></span>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div id="second" class="img-container"></div>
+
+
     <!-- Détails -->
     {% for timbre in timbres %}
     {% if timbre.id == enchere.timbre_id %}
@@ -108,7 +108,7 @@
         <div>
             <form method="post">
                 <label>Placer une mise
-                    <input type="number" placeholder="{{enchere.prix_plancher}}$" required min="{{enchere.prix_plancher}}" name="montant">
+                    <input type="number" placeholder="{{enchere.prix_plancher}}$" required min="{{timbre.prix_plancher}}" name="montant">
                 </label>
 
                 <button type="submit" class="bouton bouton-or-plein">Enchérir</button>

@@ -55,7 +55,9 @@ class MiseController{
                 return View::render('error', ['msg' => 'Désolé ! Une erreur est survenue. Veuillez réessayer à nouveau.']);
             }
         }else{
-            return View::render('mise-acceptee', ['msg' => 'Veuillez entrer un montant supérieur à l\'offre actuelle. ']);
+            // return View::render('mise-acceptee', ['msg' => 'Veuillez entrer un montant supérieur à l\'offre actuelle. ']);
+            return View::redirect('enchere?id=' . $_GET['id']);
+
         }         
     }
 }

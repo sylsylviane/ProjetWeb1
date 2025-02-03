@@ -1,0 +1,42 @@
+        .img-container {
+            width: 500px;
+            height: 500px;
+            /* display: flex; */
+            border: 1px solid var(--couleur-bleu-pale);
+            position: relative;
+            /* position: absolute; */
+            overflow: hidden;
+        }
+        #first {
+            /* top: 70%; */
+            /* left: 20%; */
+            /* transform: translateY(-50%); */
+            border: none;
+        }
+        #first:hover + #second {
+            display: flex;
+        }
+        #second {
+            position: absolute;
+            background-size: 600% 600%;
+            top: 60%;
+            left: 40%;
+            /* transform: translateY(-50%);  */
+            display: none;
+        }
+        #lens {
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 0, 0, .4);
+            position: absolute;
+            border: 3px solid var(--couleur-or);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            display: none;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Maintient les proportions de l'image */
+            object-position: center; /* Centre l'image */
+        }

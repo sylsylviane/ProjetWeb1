@@ -7,6 +7,8 @@ function init() {
     `${assetPath}img/carrousel-2eme.webp`,
   ];
   let carrousel = new Carrousel(carrouselConteneur, tableauImages);
+
+  
 }
 
 init();
