@@ -40,7 +40,7 @@
                                         type="checkbox"
                                         name="couleur_id[]"
                                         id="{{couleur.nom}}"
-                                        value="{{couleur.id}}" {% if(couleur.id == inputs.couleur_id) %} checked {%endif%}>{{couleur.nom}}
+                                        value="{{couleur.id}}">{{couleur.nom}}
                                 </label>
                                 {% endfor %}
                             </fieldset>
@@ -66,7 +66,7 @@
                                         type="checkbox"
                                         name="pays_id[]"
                                         id="{{pays.nom}}"
-                                        value="{{pays.id}}" {% if(pays.id == inputs.pays_id) %} checked {%endif%}>{{pays.nom}}
+                                        value="{{pays.id}}">{{pays.nom}}
                                 </label>
                                 {% endfor %}
                             </fieldset>
@@ -92,7 +92,7 @@
                                         type="checkbox"
                                         name="condition_id[]"
                                         id="{{condition.nom}}"
-                                        value="{{condition.id}}" {% if(condition.id == inputs.condition_id) %} checked {%endif%}>{{condition.nom}}
+                                        value="{{condition.id}}">{{condition.nom}}
                                 </label>
                                 {% endfor %}
                             </fieldset>

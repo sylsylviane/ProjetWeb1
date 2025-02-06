@@ -108,9 +108,8 @@
         <div>
             <form method="post">
                 <label>Placer une mise
-                    <input type="number" placeholder="{{enchere.prix_plancher}}$" required min="{{timbre.prix_plancher}}" name="montant">
+                    <input type="number" placeholder="{{enchere.prix_plancher}}$" required min="{{enchere.prix_plancher}}" name="montant">
                 </label>
-
                 <button type="submit" class="bouton bouton-or-plein">Enchérir</button>
             </form>
             {{msg}}

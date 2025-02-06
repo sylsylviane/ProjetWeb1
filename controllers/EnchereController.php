@@ -45,8 +45,7 @@ class EnchereController
                     $timbresFiltres = $timbre->selectByField('couleur_id', $couleur_id);
 
                     foreach ($timbresFiltres as $timbreFiltre) {
-                        $selectId = $timbre->selectId($timbreFiltre['id']);
-                        // var_dump($selectId);
+                        
                         //pour trouver l'enchère qui correspond à l'id des timbres filtrés
                         $encheresCouleur = $enchere->selectByField('timbre_id', $timbreFiltre['id']);
 
@@ -128,7 +127,7 @@ class EnchereController
 
             // Si des enchères filtrées ont été trouvées
             if ($encheresFiltrees) {
-                return View::render('portail-encheres', ['encheres' => $encheresFiltrees,'images' => $images,'timbres' => $timbres,'conditions' => $conditions,'pays' => $pays,'couleurs' => $couleurs,'mises' => $mises, 'inputs' => $selectId
+                return View::render('portail-encheres', ['encheres' => $encheresFiltrees,'images' => $images,'timbres' => $timbres,'conditions' => $conditions,'pays' => $pays,'couleurs' => $couleurs,'mises' => $mises
                 ]);
             } else {
                 return View::render('portail-encheres', ['encheres' => $encheresFiltrees,'images' => $images,'timbres' => $timbres,'conditions' => $conditions,'pays' => $pays,'couleurs' => $couleurs,'mises' => $mises,'message' => 'Aucune enchère trouvée pour les critères sélectionnés.']);

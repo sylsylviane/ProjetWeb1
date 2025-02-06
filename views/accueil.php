@@ -70,7 +70,7 @@
 
             <div>
                 <i class="ri-arrow-right-circle-fill flex"></i><small>Découvrir</small>
-            </div>
+            </div> 
         </article>
     </div>
 </section>
@@ -82,7 +82,7 @@
     <div class="grille petite">
         {% for enchere in encheres %}
 
-        <a href="{{base}}/enchere?id={{enchere.timbre_id}}" class="carte petite conteneur-carte ">
+        <a href="{{base}}/enchere?id={{enchere.id}}" class="carte petite conteneur-carte ">
 
             <picture>
                 {% for image in images %}
@@ -98,8 +98,12 @@
             </header>
             <div class="conteneur-flex">
                 <div>
-                    <h3>Prix plancher</h3>
-                    <h4>{{enchere.prix_plancher}}$</h4>
+                    {% for mise in mises %}
+                    {% if mise.enchere_id == enchere.id and mise.offre_actuelle == 'oui' %}
+                    <h3>Offre actuelle</h3>
+                    <h4>{{mise.montant}}$</h4>
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <i class="ri-heart-line"></i>
             </div>

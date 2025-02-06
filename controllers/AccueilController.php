@@ -6,6 +6,7 @@ use App\Models\Enchere;
 use App\Providers\View;
 use App\Models\Image;
 use App\Models\Timbre;
+use App\Models\Mise;
 
 class AccueilController
 {
@@ -20,8 +21,11 @@ class AccueilController
         $image = new Image;
         $images = $image->select('timbre_id');
 
+        $mise = new Mise;
+        $mises = $mise->select('montant');
+
         if ($encheres) {
-            return View::render('accueil', ['encheres' => $encheres, 'images' => $images, 'timbres' => $timbres]);
+            return View::render('accueil', ['encheres' => $encheres, 'images' => $images, 'timbres' => $timbres, 'mises' => $mises]);
         } else {
             return View::render('error');
         }

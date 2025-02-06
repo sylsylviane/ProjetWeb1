@@ -12,7 +12,7 @@
     <!-- Images -->
 
     <div class="miniature-show">
-    <!-- <div> -->
+        <!-- <div> -->
 
         <figure>
             {% for image in images %}
@@ -39,6 +39,7 @@
         <div>
             <div>
                 <p><span>Date de création: </span> {{timbre.date}}</p>
+                <p><span>Description: </span> {{timbre.description}}</p>
                 <p><span>Certifié: </span> {{timbre.certification}}</p>
                 {% for couleur in couleurs %}
                 {% if couleur.id == timbre.couleur_id %}
