@@ -40,7 +40,7 @@ Route::get('/timbre/upload-img', 'ImageController@index');
 Route::post('/timbre/upload-img', 'ImageController@uploadImage');
 Route::post('/image/delete', 'ImageController@deleteImage');
 
-Route::get('/portail-encheres', 'EnchereController@showPortailEncheres');
+Route::get('/portail-encheres', 'EnchereController@showAndFilterPortailEncheres');
 Route::get('/enchere', 'EnchereController@showEnchere');
 Route::post('/enchere', 'MiseController@miser');
 

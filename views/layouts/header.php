@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="flex">
+<body>
     <div class="top-banniere">
         {% if guest is empty %}
         <p> Bienvenue {{ session.user_name }}</p>
@@ -85,3 +85,4 @@
             {% endif %}
         </nav>
     </header>
+    <main id="region-main">

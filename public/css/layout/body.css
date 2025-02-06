@@ -1,11 +1,6 @@
 body {
   background-color: var(--couleur-blanc);
   color: var(--couleur-bleu-nuit);
-  /* ===============Ajouter pour le login================ */
-  display: flex;
-  flex-direction: column;
-  /* ===============Fin de l'ajout pour le login================ */
-
 }
 
 body > * {
